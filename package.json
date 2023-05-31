@@ -11,5 +11,9 @@
   "devDependencies": {
     "@types/node": "^18",
     "nuxt": "^3.5.2"
+  },
+  "dependencies": {
+    "@nuxtjs/auth": "^4.9.1",
+    "axios": "^1.4.0"
   }
 }

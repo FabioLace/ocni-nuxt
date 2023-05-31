@@ -1,0 +1,1 @@
+export const register = ($axios,data) => { return $axios.$post('/api/register', data) }
