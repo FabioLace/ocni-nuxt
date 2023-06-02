@@ -12,6 +12,7 @@
             <div v-if="state.email">Email: {{ state.email }}</div>
         </div>
     </form>
+    <button @click="testing()">andranno le cors??</button>
 </template>
 
 <script setup>
@@ -29,7 +30,11 @@
     });
 
     const registrationData = ref(null);
-
+    async function testing(){
+        console.log("sono un test per le cors ");
+        axios.get('http://localhost:8000/test') 
+            .then(res => console.log(res.data))
+    }
     async function registerUser() {
         try {
             console.log("REGISTER USER (VUE)");
@@ -38,6 +43,7 @@
                 password: state.value.password,
                 name: state.value.name
             }
+            console.log('SONO UN JSON?',registrationData.value);
             const response = await register(axios, registrationData.value);
             console.log("STATUS",response.status);
             if (response.status != 200) {
