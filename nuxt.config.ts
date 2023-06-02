@@ -3,7 +3,7 @@ export default defineNuxtConfig({
         strategies: {
             local: {
                 _scheme: 'local',
-                // ...
+                
             }
         }
     },
