@@ -40,8 +40,13 @@
             }
             const response = await register(axios, registrationData.value);
             console.log("STATUS",response.status);
-            if (response.status === 200) {
-                console.log("OK!");
+            if (response.status != 200) {
+                console.log("ERRORE!");
+                return
+            } else {
+                const { token, user } = response.data;
+                localStorage.setItem('token', token);
+                router.push('/');
             }
         } catch (error) {
             console.log(error.message);
