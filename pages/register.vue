@@ -4,7 +4,7 @@
             <input class="mx-auto my-2 w-50" v-model="state.name" type="text" placeholder="Name" />
             <input class="mx-auto my-2 w-50" v-model="state.email" type="email" placeholder="Email"/>
             <input class="mx-auto my-2 w-50" v-model="state.password" type="password" placeholder="Password"/>
-            <button class="mx-auto my-2 w-50" type="submit">Register</button>
+            <button class="mx-auto my-2 w-50" type="submit" :disabled="isFormInvalid" >Register</button>
         </div>
         <div class="name-email">
             <!-- Serve per vedere se effettivamente vengono assegnati dei valori dai campi input -->
@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-    import { reactive, ref } from 'vue';
+    import { reactive, ref , computed } from 'vue';
     import { register } from '../api/auth.js';
     import { useRouter } from 'vue-router';
     import axios from 'axios';
@@ -27,7 +27,9 @@
         password: '',
         name: ''
     });
-
+    const isFormInvalid = computed(() => {
+      return !email.value || !password.value || !name.value
+    })
     const registrationData = ref(null);
     async function registerUser() {
         try {
