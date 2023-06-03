@@ -8,6 +8,12 @@ export default defineNuxtConfig({
         }
     },
     css: [
-        'bootstrap/dist/css/bootstrap.css'
+        'bootstrap/dist/css/bootstrap.css',
+        'vuetify/styles/main.sass'
     ],
+    build: {
+        transpile:[
+            'vuetify'
+        ]
+    }
 })
