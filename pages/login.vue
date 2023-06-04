@@ -2,7 +2,6 @@
     <div>
         <form @submit.prevent="loginUser()">
         <div class="d-flex flex-column ">
-    
             <input class="mx-auto my-2 w-50" v-model="state.email" type="email" placeholder="Email" required/>
             <input class="mx-auto my-2 w-50" v-model="state.password" type="password" placeholder="Password" required/>
             <button class="mx-auto my-2 w-50" type="submit">Login</button>
