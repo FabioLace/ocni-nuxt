@@ -11,13 +11,17 @@
 
 <script setup>
 import { reactive, ref, onMounted } from 'vue';
-import { index } from '../api/dispositivi';
+import { index,create } from '../api/dispositivi';
 import axios from 'axios';
-
+const token = localStorage.getItem('token');
 // Variabile reattiva per memorizzare la lista dei dispositivi
-const dispositivi = reactive([]);
-
-async function getAllDisposables() {
+let dispositivi = reactive([]);
+const dispostate = ref({
+	name:'',
+	marca:'',
+	modello:'',
+})
+async function getAllDevices() {
   try {
     const response = await index(axios);
     dispositivi = response.data; // Assegna la risposta alla variabile reattiva
@@ -26,10 +30,18 @@ async function getAllDisposables() {
     console.log(error);
   }
 }
+async function createDevice(event){
+	event.preventDefault();
+	try {
+		const response = await create(axios,dispostate)
+	} catch (error) {
+		console.log(error);
+	}
+}
 
 onMounted(async () => {
   try {
-    await getAllDisposables();
+    await getAllDevices();
   } catch (error) {
     console.log(error);
   }

@@ -9,3 +9,15 @@ export const index = ($axios) => {
         throw error;
     })
 }
+
+export const create = ($axios) => {
+    return $axios.post('http://localhost:8000/api/creadispositivo',data,{
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}` // Passa il token JWT nell'header della richiesta
+        }
+    }).catch(error => {
+        console.error(error);
+        throw error;
+    })
+}
